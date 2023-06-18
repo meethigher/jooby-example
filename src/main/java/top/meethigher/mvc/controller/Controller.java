@@ -65,6 +65,17 @@ public class Controller {
     public String pageQuery(PageRequest req) {
         return req.toString();
     }
+
+    @GET("/failure")
+    public String failure() {
+        throw new RuntimeException("测试失败");
+    }
+
+    @GET("/error")
+    public String error() {
+        int i=1/0;
+        return null;
+    }
 }
 
 class PageRequest {
