@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 
- * 
  * @author chenchuancheng github.com/meethigher
  * @since 2023/6/17 23:31
  */
@@ -25,6 +23,14 @@ public class Controller {
 
     @GET("/pathParam/{id}")
     public String pathParam(@PathParam String id) {
+        return id;
+    }
+
+    /**
+     * @see <a href="https://jooby.io/#context-parameters-path">正则表达式校验</a>
+     */
+    @GET("/pathParam/{id:^[a-zA-Z0-9]{5}$}")
+    public String pathParamRegex(@PathParam String id) {
         return id;
     }
 
@@ -73,7 +79,7 @@ public class Controller {
 
     @GET("/error")
     public String error() {
-        int i=1/0;
+        int i = 1 / 0;
         return null;
     }
 }
