@@ -17,6 +17,8 @@ import static io.jooby.Jooby.runApp;
 public class MVCApplication {
     public static void main(String[] args) {
         runApp(args, app -> {
+            // 配置静态资源，优先应用路径下static，其次类路径下static
+            app.assets("/**", "/static");
             // 设置全局装饰器
             app.decorator(new GlobalDecorator());
             // 设置全局异常处理
